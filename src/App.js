@@ -11,6 +11,10 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [status, setStatus] = useState('all');
   const [filteredTodos, setFilteredTodos] = useState([]);
+  // use effect
+  useEffect(() => {
+    filterHandler();
+  }, [todos, status]);
   // functions
   const filterHandler = () => {
     switch (status) {
@@ -38,9 +42,9 @@ function App() {
         setStatus={setStatus}
       />
       <TodoList
+        filteredTodos={filteredTodos}
         setTodos={setTodos}
         todos={todos}
-        filteredTodos={filteredTodos}
       />
     </div>
   );
